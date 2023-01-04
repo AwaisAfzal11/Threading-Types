@@ -1,0 +1,67 @@
+# Muhammad Awais Afzal
+# 200901037
+# Submitted to: Mam Asia 
+
+
+import threading
+
+#INput the value of thread!
+def input_thread(input_string):
+  print("Enter the string: ")  
+  input_string.append(input())
+
+input_string = []
+thread = threading.Thread(target=input_thread, args=(input_string,))
+thread.start()
+
+# Do other things here while waiting for the user to input a string
+
+thread.join()
+print(input_string[0])
+
+#Inorder to reverse the thread!
+def reverse_string(string, output):
+  output.append(string[::-1])
+
+def main():
+  string = input("Enter a string to reverse: ")
+  output = []
+  thread = threading.Thread(target=reverse_string, args=(string, output))
+  thread.start()
+  thread.join()
+  print(output[0])
+
+if __name__ == "__main__":
+  main()
+
+
+#Now code for capitalizing the input thread!
+def capitalize_string(string, output):
+  output.append(string.upper())
+
+def main():
+  string = input("Enter a string to capitalize: ")
+  output = []
+  thread = threading.Thread(target=capitalize_string, args=(string, output))
+  thread.start()
+  thread.join()
+  print(output[0])
+
+if __name__ == "__main__":
+  main()
+
+def worker():
+    print("Thread started")
+    print ("...fg")
+    # Do some work here
+    print("Thread finished")
+
+# Create the thread
+thread = threading.Thread(target=worker)
+
+# Start the thread
+thread.start()
+
+# Shift the thread to the end of the queue
+thread.shift()
+
